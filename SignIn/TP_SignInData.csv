@@ -1,0 +1,41 @@
+body,scenario,expected_status_code,expected_message
+"{
+    ""username"":""superecarehealth@mailinator.com"",
+    ""password"":""Pass@123""
+}",All valid credentials,200,
+"{
+    ""username"":""superecarehealth@mailinator.com"",
+    ""password"":""Pass@111""
+}",With valid username and invalid password,404,
+"{
+    ""username"":""superecarehealth@mailinator""
+    ""password"":""Pass@111""
+}",With Invalid username and valid password,404,
+"{
+    ""username"":"" superecarehealth@mailinator.com"",
+    ""password"":""Pass@123""
+}",With Space in the username at the begining,404,
+"{
+    ""username"":”superecarehealth@mailinator.com "",
+    ""password"":""Pass@123""
+}",With Space in the username at the end,404,
+"{
+    ""username"":""superecarehealth@mailinator.com"",
+    ""password"":"" Pass@123""
+}",With Space in the password at the begining,404,
+"{
+    ""username"":""superecarehealth@mailinator.com"",
+    ""password"":""Pass@123 ""
+}",With Space in the password at the end,404,
+"{
+    ""username"":"""",
+    ""password"":"" ""
+}",With Empty username and password,400,
+"{
+    ""username"":"""",
+    ""password"":""Pass@111""
+}",With Empty username and valid password,400,
+"{
+    ""username"":""superecarehealth@mailinator.com"",
+    ""password"":""""
+}",With valid username and empty password,400,
